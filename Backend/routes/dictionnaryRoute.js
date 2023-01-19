@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { findAlldictionnaries,numberOfHumansInDate,positionsOfHumans} = require('../controllers/dictionnaryController');
+const { findAlldictionnaries,getDataByTime} = require('../controllers/dictionnaryController');
 
 // all dictionnary's routes
 // find all dictionnaries 
 router.get('/findAlldictionnaries', findAlldictionnaries);
-router.get('/numberOfHumansInDate', numberOfHumansInDate);
-router.get('/positionsOfHumans', positionsOfHumans);
+
+router.get('/getDataByTime', getDataByTime);
 module.exports = router;
