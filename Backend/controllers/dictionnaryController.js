@@ -13,7 +13,7 @@ const coll = db.collection("dictionnaries");
 exports.getNumberOfHumansByTime = async (req, res) => {
     try {
       //destruct time1 and time2  inputs
-      const { time1,time2 } = req.body;
+      const { time1,time2 } = req.query;
       //find dictionnaries by time interval
       
       const dictionnaries =await coll.find({$and:
@@ -46,7 +46,7 @@ exports.getNumberOfHumansByTime = async (req, res) => {
 exports.getPositionsByTime = async (req, res) => {
   try {
     //destruct time1 and time 2  inputs
-    const { time1,time2 } = req.body;
+    const { time1,time2 } = req.query;
     
     const dictionnaries =await coll.find({$and:
       [
