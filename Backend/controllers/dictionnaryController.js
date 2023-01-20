@@ -28,7 +28,6 @@ exports.getNumberOfHumansByTime = async (req, res) => {
         const instances = elt.instances
         let  time=elt.timestamp
         let numberHumans= Object.entries(instances).length
-        console.log("number ",numberHumans)
         result.push({y_axis:numberHumans,timestamp:time})
       }) 
       res.status(200).json({ message: "success", data:result });
