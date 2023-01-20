@@ -28,9 +28,9 @@ exports.getNumberOfHumansByTime = async (req, res) => {
         const instances = elt.instances
         let  time=elt.timestamp
         let numberHumans= Object.entries(instances).length
-        result.push({y_axis:numberHumans,timestamp:time})
+        result.push({timestamp:time,y_axis:numberHumans})
       }) 
-      res.status(200).json({ message: "success", data:result });
+      res.status(200).json(result);
     } catch (error) {
         console.log(error)
         res.status(500).json({
@@ -54,7 +54,7 @@ exports.getPositionsByTime = async (req, res) => {
      ]
    
     }).toArray()
-    let positions = []
+    let data = []
      dictionnaries.forEach(elt=> {
       const instances = elt.instances
       let  time=elt.timestamp
@@ -62,10 +62,10 @@ exports.getPositionsByTime = async (req, res) => {
         const [key,value] = instance
       let  x_position=value.pos_x;
       let  y_position=value.pos_y;
-         positions.push({timestamp:time,y_axis:{ x_position,y_position}})
+         data.push({timestamp:time,y_axis:{ x_position,y_position}})
       })
     }) 
-    res.status(200).json({ message: "success", data:{ positions} });
+    res.status(200).json(data);
   } catch (error) {
       console.log(error)
       res.status(500).json({
