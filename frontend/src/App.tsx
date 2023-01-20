@@ -53,7 +53,7 @@ function App() {
                         ? moment(timeRangeFilter.to)
                         : moment().endOf("day"),
                     ]}
-                    allowClear
+                   allowClear
                     onChange={handleTimeRangeChange}
                   />
           </Col>
