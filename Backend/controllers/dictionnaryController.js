@@ -13,7 +13,7 @@ const coll = db.collection("dictionnaries");
 exports.getNumberOfHumansByTime = async (req, res) => {
     try {
       //destruct time1 and time2  inputs
-      const { time1,time2 } = req.query;
+      const { time1,time2} = req.query;
       //find dictionnaries by time interval
       
       const dictionnaries =await coll.find({$and:
@@ -29,7 +29,7 @@ exports.getNumberOfHumansByTime = async (req, res) => {
         let  time=elt.timestamp
         let numberHumans= Object.entries(instances).length
         console.log("number ",numberHumans)
-        result.push({numberHumans,time})
+        result.push({y_axis:numberHumans,timestamp:time})
       }) 
       res.status(200).json({ message: "success", data:result });
     } catch (error) {
@@ -58,12 +58,12 @@ exports.getPositionsByTime = async (req, res) => {
     let positions = []
      dictionnaries.forEach(elt=> {
       const instances = elt.instances
+      let  time=elt.timestamp
       Object.entries(instances).map(instance=> {
         const [key,value] = instance
-        px=value.pos_x;
-        py=value.pos_y;
-       vy=value.vel_y
-         positions.push({px,py,vy})
+      let  x_position=value.pos_x;
+      let  y_position=value.pos_y;
+         positions.push({timestamp:time,y_axis:{ x_position,y_position}})
       })
     }) 
     res.status(200).json({ message: "success", data:{ positions} });
