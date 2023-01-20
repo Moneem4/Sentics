@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Col, DatePicker, Radio, Row } from 'antd'
 import moment from 'moment';
 import "./App.css"
+import { Component_1 } from './component/component_1/Component_1';
+import { Component_2 } from './component/component_2/Component_2';
 type TimeRange = {
   from: any;
   to: any;
@@ -58,12 +60,12 @@ function App() {
           </Row>
           <Row>
           <Col span={24}>
-
+                      <Component_1 date_from={timeRangeFilter.from} date_to={timeRangeFilter.to} y_axis={"1"}/>
           </Col>
           </Row>
           <Row>
           <Col span={24}>
-
+          <Component_2 date_from={timeRangeFilter.from} date_to={timeRangeFilter.to} y_axis={"1"}/>
           </Col>
         </Row>
       

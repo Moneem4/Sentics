@@ -17,6 +17,7 @@ type Props = {
   }, []);
 
   const asyncFetch = () => {
+   
     fetch(`http://localhost:5000/dictionnary/getNumberOfHumansByTime?time1=${props.date_from}&time2=${props.date_to}`)
       .then((response) => response.json())
       .then((json) => setData(json))

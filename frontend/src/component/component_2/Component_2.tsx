@@ -14,9 +14,7 @@ const [data, setData] = useState([]);
 useEffect(() => {
     asyncFetch();
   }, []);
-
-
-  
+ 
   const asyncFetch = () => {
     fetch(`http://localhost:5000/dictionnary/getPositionsByTime?time1=${props.date_from}&time2=${props.date_to}`)
       .then((response) => response.json())
